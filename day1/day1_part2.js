@@ -8,18 +8,19 @@ function day1(input) {
         const arr = contents.split(/\r?\n/);
         // console.log(arr);
         let count = 0;
-        let sum = 0;
-        for (let i = 0; i < arr.length; i++) {
-            let prev = 0;
+        let prev = 0;
+        for (let i = 0; i < arr.length-1; i++) {
+            let curr = 0;
             for (let j = 0; j < 3; j++) {
-                prev += Number(arr[i+j]);
+                curr += Number(arr[i+j]);
+                console.log(i,j,arr[i+j]);
             }
-            if (sum < prev) {
-                count++;
-                sum = prev;
-                console.log(sum, prev);
+            if (prev < curr) {
+                prev = curr;
+                count++;  
             }
             
+            console.log(prev, curr);
         }
         return count;
     } catch (error) {
