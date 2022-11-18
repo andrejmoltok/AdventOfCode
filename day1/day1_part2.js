@@ -6,19 +6,12 @@ function day1(input) {
     try {
         const contents = fs.readFileSync(input, 'utf-8');
         const arr = contents.split(/\r?\n/);
-        let count = -1;
-        let prev = 0;
-        for (let i = 0; i < arr.length-2; i++) {
-            let curr = 0;
-            for (let j = 0; j < 3; j++) {
-                curr += Number(arr[i+j]);
-            }
-            if (prev < curr) {
-                count++;  
-            }
+        return arr.reduce(function(p,c,i,a) {a.reduce(function(prev,curr,idx,arr) {
+            curr += Number(arr[i+idx]);
+            prev < curr ? p++ : p;
             prev = curr;
-        }
-        return count;
+            return p;
+        },0)},-1);
     } catch (error) {
         console.log(error);
     }
