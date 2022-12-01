@@ -37,6 +37,8 @@ function day3(input) {
             myMax == max[d][0] ? gammarate += 0 : myMax == max[d][1] ? gammarate += 1 : 'error';
             myMin == max[d][0] ? epsrate += 0 : myMin == max[d][1] ? epsrate += 1 : 'error';
         }
+        console.log(gammarate);
+        console.log(epsrate);
         return parseInt(gammarate,2) * parseInt(epsrate,2);
     } catch (error) {
         console.log(error);
