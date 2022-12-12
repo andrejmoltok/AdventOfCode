@@ -5,21 +5,26 @@ function part2(input) {
     try {
         const content = fs.readFileSync(input, 'utf-8');
         const arr = content.split('\r\n');
+        //console.log(arr);
         let max = 0;
         let localSum = 0;
         let final = 0;
+        let newArr = [];
         for (let i = 0; i < arr.length; i++) {
+            var mySum = 0;
             localSum += +arr[i];
             if (arr[i] === '') {
-                final = Math.max(max,localSum);
+                mySum = Math.max(max,localSum);
+                newArr.push(localSum);
                 localSum = 0;
             }
-            if (final > max) {
-                max = final;
+            if (mySum > 0) {
+                max = mySum;
             }
-            final = Math.max(max,localSum)
+            newArr
+            final = Math.max(max,localSum);
         }
-        return final;
+        return newArr;
     } catch (error) {
         console.log(error);
     }
